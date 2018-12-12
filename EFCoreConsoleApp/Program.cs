@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using EFCoreConsoleApp.Context;
+using System;
 
 namespace EFCoreConsoleApp
 {
@@ -6,8 +8,17 @@ namespace EFCoreConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Oi pessoal da Numeria!");
             Console.ReadLine();
+            Console.WriteLine("Como já temos dados na tabela de Cidades vamos inserir dados na tabela Pessoa!");
+            Console.ReadLine();
+
+            using (var db = new DataBaseContext())
+            {
+                db.Pessoas.Add(new Entities.Pessoa() { CidadeId = 1, Nome = "Filipe" });
+                db.SaveChanges();
+            }
+            
         }
     }
 }

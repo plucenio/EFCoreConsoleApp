@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreConsoleApp.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(DataBaseContext))]
     [Migration("20181212193529_MigracaoInicial")]
     partial class MigracaoInicial
     {

@@ -1,12 +1,9 @@
 ﻿using EFCoreConsoleApp.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EFCoreConsoleApp.Context
 {
-    public class AppContext : DbContext
+    public class DataBaseContext : DbContext
     {
         public DbSet<Cidade> Cidades { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
