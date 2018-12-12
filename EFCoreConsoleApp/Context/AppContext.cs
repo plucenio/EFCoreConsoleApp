@@ -9,6 +9,7 @@ namespace EFCoreConsoleApp.Context
     public class AppContext : DbContext
     {
         public DbSet<Cidade> Cidades { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
