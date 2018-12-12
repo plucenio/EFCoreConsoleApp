@@ -12,7 +12,7 @@ namespace EFCoreConsoleApp.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CidadeNatalDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace EFCoreConsoleApp.Context
             modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 2, Nome = "Porto Alegre" });
             modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 3, Nome = "Canoas" });
             modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 4, Nome = "Viamão" });
-            modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 4, Nome = "Pelotas" });
+            modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 5, Nome = "Pelotas" });
         }
     }
 }
