@@ -17,5 +17,10 @@ namespace EFCoreConsoleApp.Entities
         public int CidadeId { get; set; }
 
         public Cidade Cidade { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id.ToString("000")} | {Nome.PadRight(20)} | {AnoDeNascimento} | {Idade}";
+        }
     }
 }
