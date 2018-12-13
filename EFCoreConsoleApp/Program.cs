@@ -15,7 +15,7 @@ namespace EFCoreConsoleApp
 
             using (var db = new DataBaseContext())
             {
-                db.Pessoas.Add(new Entities.Pessoa() { CidadeId = 1, Nome = "Filipe" });
+                db.Pessoas.Add(new Entities.Pessoa() { CidadeId = 1, AnoDeNascimento = 1987, Nome = "Filipe" });
                 db.SaveChanges();
             }
             

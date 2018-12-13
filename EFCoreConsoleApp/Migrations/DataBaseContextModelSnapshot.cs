@@ -3,16 +3,14 @@ using EFCoreConsoleApp.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreConsoleApp.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20181212193529_MigracaoInicial")]
-    partial class MigracaoInicial
+    partial class DataBaseContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,6 +56,34 @@ namespace EFCoreConsoleApp.Migrations
                             Id = 5,
                             Nome = "Pelotas"
                         });
+                });
+
+            modelBuilder.Entity("EFCoreConsoleApp.Entities.Pessoa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnoDeNascimento")
+                        .HasColumnName("Nascimento_nome_alterado");
+
+                    b.Property<int>("CidadeId");
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CidadeId");
+
+                    b.ToTable("Pessoas");
+                });
+
+            modelBuilder.Entity("EFCoreConsoleApp.Entities.Pessoa", b =>
+                {
+                    b.HasOne("EFCoreConsoleApp.Entities.Cidade", "Cidade")
+                        .WithMany()
+                        .HasForeignKey("CidadeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

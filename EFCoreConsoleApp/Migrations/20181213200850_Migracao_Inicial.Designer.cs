@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreConsoleApp.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20181212201712_AdicionadaEntidadePessoa")]
-    partial class AdicionadaEntidadePessoa
+    [Migration("20181213200850_Migracao_Inicial")]
+    partial class Migracao_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,6 +65,9 @@ namespace EFCoreConsoleApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnoDeNascimento")
+                        .HasColumnName("Nascimento_nome_alterado");
 
                     b.Property<int>("CidadeId");
 
