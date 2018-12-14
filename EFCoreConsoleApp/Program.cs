@@ -84,12 +84,12 @@ namespace EFCoreConsoleApp
             using (var db = new BancoDeDadosContext())
             {
                 var listaPessoas = db.Pessoas
-                                  .FromSql("SELECT p.Nome, p.Nascimento_nome_alterado FROM dbo.Pessoas as p inner join dbo.Cidades as c on p.CidadeId = c.Id")
+                                  .FromSql("SELECT p.Id, p.Nome, p.Nascimento_nome_alterado, p.CidadeId FROM dbo.Pessoas as p inner join dbo.Cidades as c on p.CidadeId = c.Id")
                                   .ToList();
 
                 foreach (var p in listaPessoas)
                 {
-                    Console.WriteLine($"{p.Nome.PadRight(20)} | {p.AnoDeNascimento}");
+                    Console.WriteLine($"{p.Id.ToString("000")} | {p.Nome.PadRight(20)} | {p.AnoDeNascimento}");
                 }
             }
             Console.ReadLine();
