@@ -10,11 +10,12 @@ namespace EFCoreConsoleApp.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CidadeNatalDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CidadeDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Seeds
             modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 1, Nome = "Torres" });
             modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 2, Nome = "Porto Alegre" });
             modelBuilder.Entity<Cidade>().HasData(new Cidade { Id = 3, Nome = "Canoas" });
