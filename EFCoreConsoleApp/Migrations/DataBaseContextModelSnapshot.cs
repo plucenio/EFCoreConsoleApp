@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreConsoleApp.Migrations
 {
-    [DbContext(typeof(DataBaseContext))]
+    [DbContext(typeof(BancoDeDadosContext))]
     partial class DataBaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

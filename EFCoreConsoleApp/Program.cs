@@ -1,6 +1,7 @@
 ﻿
 using EFCoreConsoleApp.Context;
 using EFCoreConsoleApp.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace EFCoreConsoleApp
                 new Pessoa() { CidadeId = 1, AnoDeNascimento = 1987, Nome = "Filipe" },
                 new Pessoa() { CidadeId = 2, AnoDeNascimento = 1980, Nome = "João" }
             };            
-            using (var db = new DataBaseContext())
+            using (var db = new BancoDeDadosContext())
             {
                 db.Pessoas.AddRange(pessoas);
                 db.SaveChanges();
@@ -36,7 +37,7 @@ namespace EFCoreConsoleApp
 
             #region Listagem
             Console.WriteLine("Listagem das pessoas no banco de dados:");
-            using (var db = new DataBaseContext())
+            using (var db = new BancoDeDadosContext())
             {
                 pessoas = db.Pessoas.ToList();
             }
@@ -50,7 +51,7 @@ namespace EFCoreConsoleApp
 
             #region Filtragem
             Console.WriteLine("Filtragem das pessoas que moram em Torres:");
-            using (var db = new DataBaseContext())
+            using (var db = new BancoDeDadosContext())
             {
                 pessoas = db.Pessoas.Where(p => p.CidadeId == 1).ToList();
             }
@@ -64,7 +65,7 @@ namespace EFCoreConsoleApp
 
             #region Join
             Console.WriteLine("Vamos fazer uma listagem com um JOIN entre Pessoas e Cidades.");
-            using (var db = new DataBaseContext())
+            using (var db = new BancoDeDadosContext())
             {
                 var query = from p in db.Pessoas
                             join c in db.Cidades on p.CidadeId equals c.Id
@@ -78,9 +79,25 @@ namespace EFCoreConsoleApp
             Console.ReadLine();
             #endregion
 
+            #region Consulta bruta SQL
+            Console.WriteLine("Vamos fazer uma consulta bruta com SQL.");
+            using (var db = new BancoDeDadosContext())
+            {
+                var listaPessoas = db.Pessoas
+                                  .FromSql("SELECT p.Nome, p.Nascimento_nome_alterado FROM dbo.Pessoas as p inner join dbo.Cidades as c on p.CidadeId = c.Id")
+                                  .ToList();
+
+                foreach (var p in listaPessoas)
+                {
+                    Console.WriteLine($"{p.Nome.PadRight(20)} | {p.AnoDeNascimento}");
+                }
+            }
+            Console.ReadLine();
+            #endregion
+
             #region Deleção
             Console.WriteLine("Ao final vamos deletar os registros da tabela Pessoas.");
-            using (var db = new DataBaseContext())
+            using (var db = new BancoDeDadosContext())
             {
                 db.Pessoas.RemoveRange(db.Pessoas);
                 db.SaveChanges();

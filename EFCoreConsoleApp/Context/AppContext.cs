@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreConsoleApp.Context
 {
-    public class DataBaseContext : DbContext
+    public class BancoDeDadosContext : DbContext
     {
         public DbSet<Cidade> Cidades { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
