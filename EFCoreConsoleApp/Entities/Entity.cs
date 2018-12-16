@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCoreConsoleApp.Entities
 {
+    [NotMapped]
     public abstract class Entity
     {
         [Key]
